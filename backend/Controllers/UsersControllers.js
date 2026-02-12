@@ -2,6 +2,7 @@
 
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
+const jwtConfig = require('../config/jwt');
 const UserModles = require('../Models/UsersModels');
 
 exports.signup = async (req, res) => {
@@ -45,8 +46,8 @@ exports.login = async (req, res) => {
 
     res.status(200).json({
       userId: user._id,
-      token: jwt.sign({ userId: user._id }, 'RANDOM_TOKEN_SECRET', {
-        expiresIn: '24h',
+      token: jwt.sign({ userId: user._id }, jwtConfig.secret, {
+        expiresIn: jwtConfig.expiresIn,
       }),
     });
   } catch (error) {

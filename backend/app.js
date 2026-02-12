@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -8,7 +9,7 @@ const userRoutes = require('./routes/UsersRoutes');
 const app = express();
 
 mongoose
-  .connect('mongodb://mongo:27017/monVieuxGrimoire')
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
