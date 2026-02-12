@@ -152,6 +152,59 @@ Avantages :
 
 ---
 
+# 🧰 Stack Technique
+
+| Technologie | Rôle             |
+| ----------- | ---------------- |
+| Node.js     | Runtime          |
+| Express     | API REST         |
+| MongoDB     | Base NoSQL       |
+| Mongoose    | ODM              |
+| Argon2      | Hash             |
+| JWT         | Auth             |
+| Multer      | Upload           |
+| Sharp       | Optimisation     |
+| Docker      | Conteneurisation |
+
+---
+
+# 📖 Documentation API
+
+Documentation générée via **Swagger (OpenAPI)** :
+
+* Documentation interactive
+* Test direct des endpoints
+* Standardisation
+
+Disponible à : http://localhost:4000/api-docs/
+
+---
+
+# 🚀 Installation
+
+## 🐳 Docker (Recommandé)
+
+```bash
+docker-compose up --build
+```
+
+Api dispoblie sur : http://localhost:4000
+Frontend sur : http://localhost:3000
+
+Swagger documentation API sur http://localhost:4000/api-docs
+
+---
+
+## 💻 Local
+
+```bash
+npm install
+npm run dev
+```
+
+MongoDB doit être lancé localement si Docker n’est pas utilisé.
+
+
 # 🔐 Sécurité
 
 Inspirée des recommandations **OWASP**.
@@ -216,51 +269,6 @@ Objectif :
 * Respecter les principes Green IT
 
 ---
-
-# 🧰 Stack Technique
-
-| Technologie | Rôle             |
-| ----------- | ---------------- |
-| Node.js     | Runtime          |
-| Express     | API REST         |
-| MongoDB     | Base NoSQL       |
-| Mongoose    | ODM              |
-| Argon2      | Hash             |
-| JWT         | Auth             |
-| Multer      | Upload           |
-| Sharp       | Optimisation     |
-| Docker      | Conteneurisation |
-
----
-
-# 📖 Documentation API
-
-Documentation générée via **Swagger (OpenAPI)** :
-
-* Documentation interactive
-* Test direct des endpoints
-* Standardisation
-
----
-
-# 🚀 Installation
-
-## 🐳 Docker (Recommandé)
-
-```bash
-docker-compose up --build
-```
-
----
-
-## 💻 Local
-
-```bash
-npm install
-npm run dev
-```
-
-MongoDB doit être lancé localement si Docker n’est pas utilisé.
 
 
 # 👤 Auteur
