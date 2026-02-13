@@ -1,8 +1,8 @@
 module.exports = {
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['<rootDir>/test/setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/config/JestSetup.js'],
   collectCoverage: true,
-  coverageDirectory: 'coverage',
+  coverageDirectory: './test/coverage',
   coverageReporters: ['text', 'lcov'],
   collectCoverageFrom: [
     'Controllers/**/*.js',
@@ -11,5 +11,5 @@ module.exports = {
     'Routes/**/*.js',
   ],
   coveragePathIgnorePatterns: ['/node_modules/', '/server.js'],
-  testPathIgnorePatterns: ['/node_modules/', '/coverage/'],
+  testPathIgnorePatterns: ['/node_modules/', '/test/coverage/'],
 };

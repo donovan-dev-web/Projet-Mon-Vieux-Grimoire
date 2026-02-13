@@ -3,8 +3,8 @@ class AppError extends Error {
   constructor(message, status, code) {
     super(message);
     this.status = status || 500;
-    this.code = code || null; // Code interne précis
-    this.isOperational = true;
+    this.code = code || null; // Code interne précis pour identifier le type d'erreur
+    this.isOperational = true; // Indique que c'est une erreur prévue et gérée, pas une erreur de programmation
   }
 }
 
