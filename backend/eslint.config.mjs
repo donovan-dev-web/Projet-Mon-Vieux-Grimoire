@@ -5,8 +5,8 @@ import { defineConfig } from 'eslint/config';
 export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs}'],
-    plugins: { js },
-    extends: ['js/recommended'],
+    plugins: { js, jest },
+    extends: ['js/recommended', 'jest/recommended', 'prettier'],
     languageOptions: { globals: globals.node },
   },
   { files: ['**/*.js'], languageOptions: { sourceType: 'commonjs' } },

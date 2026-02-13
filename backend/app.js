@@ -7,22 +7,15 @@ const swaggerSpec = require('./config/swagger');
 
 /* ===== Importation des modules ===== */
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 /* ===== Importation du middleware de gestion des erreurs ===== */
 const errorHandler = require('./Middleware/errorHandler');
 
 /* ===== Importation des routes ===== */
-const userRoutes = require('./routes/UsersRoutes');
+const userRoutes = require('./Routes/UsersRoutes');
 
 const app = express();
-
-/* ===== Connexion à MongoDB ===== */
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 /* ===== CORS Fix ===== */
 app.use((req, res, next) => {

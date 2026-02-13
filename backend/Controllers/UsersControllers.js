@@ -21,7 +21,7 @@ exports.signup = async (req, res, next) => {
 
     res.status(201).json({ message: 'Utilisateur créé avec succès' });
   } catch (err) {
-    console.error(err);
+    if (err.isOperational) return next(err);
     next(errors.SERVER_ERROR);
   }
 };
@@ -44,7 +44,7 @@ exports.login = async (req, res, next) => {
       }),
     });
   } catch (err) {
-    console.error(err);
+    if (err.isOperational) return next(err);
     next(errors.SERVER_ERROR);
   }
 };

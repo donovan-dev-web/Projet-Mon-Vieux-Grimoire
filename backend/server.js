@@ -1,5 +1,6 @@
 const http = require('http');
 const app = require('./app');
+const mongoose = require('mongoose');
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
@@ -45,4 +46,13 @@ server.on('listening', () => {
   console.log('Listening on ' + bind);
 });
 
-server.listen(port);
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('Connexion à MongoDB réussie !');
+    server.listen(port);
+  })
+  .catch((error) => {
+    console.error('Connexion à MongoDB échouée !');
+    process.exit(1);
+  });
