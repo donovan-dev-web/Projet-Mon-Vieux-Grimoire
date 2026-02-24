@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const jwtConfig = require('../../config/jwt');
+const jwtConfig = require('../../config/jwt.config');
 
 describe('JWT generation and verification', () => {
   const payload = { userId: '12345' };

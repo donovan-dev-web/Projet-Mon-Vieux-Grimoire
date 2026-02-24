@@ -4,7 +4,7 @@
  */
 
 // ----- MOCK DE SHARP POUR TOUS LES TESTS -----
-jest.mock('../../services/imageServices', () => ({
+jest.mock('../../services/image.service.js', () => ({
   saveImage: jest.fn().mockImplementation(async (buffer, filename) => {
     console.log('Mock Sharp saveImage called for', filename);
     return `${filename}.webp`;
@@ -15,8 +15,8 @@ jest.mock('../../services/imageServices', () => ({
 const request = require('supertest');
 const path = require('path');
 const app = require('../../app');
-const User = require('../../Models/UsersModels');
-const Book = require('../../Models/BooksModels');
+const User = require('../../models/user.model');
+const Book = require('../../models/book.model');
 const argon2 = require('argon2');
 
 const testImagePath = path.join(__dirname, '../__fixtures__/test.jpg');

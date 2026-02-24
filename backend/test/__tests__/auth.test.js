@@ -1,13 +1,13 @@
 const request = require('supertest');
 const app = require('../../app');
-const User = require('../../Models/UsersModels');
+const User = require('../../models/user.model');
 const argon2 = require('argon2');
 
 describe('POST /signup', () => {
   it('should create a user', async () => {
     const response = await request(app).post('/api/auth/signup').send({
       email: 'test@mail.com',
-      password: '123456',
+      password: 'password123',
     });
 
     expect(response.statusCode).toBe(201);
@@ -19,12 +19,12 @@ describe('POST /signup', () => {
   it('should fail if email already exists', async () => {
     await User.create({
       email: 'duplicate@mail.com',
-      password: await argon2.hash('123456'),
+      password: await argon2.hash('password123'),
     });
 
     const response = await request(app).post('/api/auth/signup').send({
       email: 'duplicate@mail.com',
-      password: '123456',
+      password: 'password123',
     });
 
     expect(response.statusCode).toBe(400);

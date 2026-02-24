@@ -1,6 +1,6 @@
 const request = require('supertest');
 const express = require('express');
-const errorHandler = require('../../Middleware/errorHandler');
+const errorHandler = require('../../middlewares/error-handler.middleware');
 
 describe('Global error handler', () => {
   const app = express();

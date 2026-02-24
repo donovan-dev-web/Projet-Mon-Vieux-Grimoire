@@ -1,10 +1,9 @@
-const { AppError } = require('../utils/app-error');
+const AppError = require('../utils/app-error');
 
 function validateRequest(schema) {
   return (req, _res, next) => {
     let data;
 
-    // if multipart/form-data, => parse le champ book
     if (req.body.book && typeof req.body.book === 'string') {
       try {
         data = JSON.parse(req.body.book);
@@ -20,11 +19,14 @@ function validateRequest(schema) {
     const result = schema.safeParse(data);
 
     if (!result.success) {
-      const errors = result.error.errors.map((e) => e.message).join(', ');
+      const errors =
+        result.error?.errors?.map((e) => e.message).join(', ') ||
+        'Validation échouée';
+      console.log(result.error.format());
       return next(new AppError(errors, 400, 'VALIDATION_ERROR'));
     }
 
-    req.body = result.data; // remplace req.body => données validées
+    req.body = result.data;
     next();
   };
 }
