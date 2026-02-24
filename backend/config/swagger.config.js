@@ -1,8 +1,9 @@
+// swagger.config.js
 const swaggerJsdoc = require('swagger-jsdoc');
 const path = require('path');
 
 const options = {
-  swaggerDefinition: {
+  definition: {
     openapi: '3.0.0',
     info: {
       title: 'API Mon Vieux Grimoire',
@@ -23,6 +24,7 @@ const options = {
         },
       },
       schemas: {
+        // ======= Book =======
         Book: {
           type: 'object',
           required: [
@@ -39,6 +41,11 @@ const options = {
             _id: {
               type: 'string',
               description: 'ID unique du livre',
+              example: '60c72b2f9b1d8e5a5c8f9e7a',
+            },
+            userId: {
+              type: 'string',
+              description: "ID de l'utilisateur propriétaire",
               example: '60c72b2f9b1d8e5a5c8f9e7a',
             },
             title: {
@@ -67,15 +74,22 @@ const options = {
               example: 'Fantastique',
             },
             ratings: {
-              userId: {
-                type: 'string',
-                description: "ID de l'utilisateur qui a noté le livre",
-                example: '60c72b2f9b1d8e5a5c8f9e7a',
-              },
-              grade: {
-                type: 'number',
-                description: "Note donnée par l'utilisateur",
-                example: 4,
+              type: 'array',
+              description: 'Notes des utilisateurs',
+              items: {
+                type: 'object',
+                properties: {
+                  userId: {
+                    type: 'string',
+                    description: "ID de l'utilisateur qui a noté le livre",
+                    example: '60c72b2f9b1d8e5a5c8f9e7a',
+                  },
+                  grade: {
+                    type: 'number',
+                    description: "Note donnée par l'utilisateur",
+                    example: 4,
+                  },
+                },
               },
             },
             averageRating: {
@@ -85,6 +99,29 @@ const options = {
             },
           },
         },
+
+        BookCreate: {
+          type: 'object',
+          required: ['title', 'author', 'genre', 'year'],
+          properties: {
+            title: { type: 'string', example: 'Mon livre' },
+            author: { type: 'string', example: 'Auteur' },
+            genre: { type: 'string', example: 'Fantastique' },
+            year: { type: 'integer', example: 2021 },
+          },
+        },
+
+        BookUpdate: {
+          type: 'object',
+          properties: {
+            title: { type: 'string', example: 'Nouveau titre' },
+            author: { type: 'string', example: 'Nouvel auteur' },
+            genre: { type: 'string', example: 'Nouvel genre' },
+            year: { type: 'integer', example: 2022 },
+          },
+        },
+
+        // ======= User =======
         User: {
           type: 'object',
           required: ['email', 'password'],
@@ -104,6 +141,32 @@ const options = {
               description: "Mot de passe de l'utilisateur",
               example: 'motdepasse123',
             },
+          },
+        },
+
+        UserSignup: {
+          type: 'object',
+          required: ['email', 'password'],
+          properties: {
+            email: {
+              type: 'string',
+              format: 'email',
+              example: 'test@example.com',
+            },
+            password: { type: 'string', example: 'MotDePasse123!' },
+          },
+        },
+
+        UserLogin: {
+          type: 'object',
+          required: ['email', 'password'],
+          properties: {
+            email: {
+              type: 'string',
+              format: 'email',
+              example: 'test@example.com',
+            },
+            password: { type: 'string', example: 'MotDePasse123!' },
           },
         },
       },

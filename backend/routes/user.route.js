@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
-// Import controller
+
+// Controllers
 const usersController = require('../controllers/user.controller');
-// Import schema validation
+
+// Middleware de validation
 const validateRequest = require('../middlewares/validate-request.middleware');
+
+// Zod schemas
 const { signupSchema, loginSchema } = require('../schemas/user.schema');
 
 /**

@@ -5,8 +5,8 @@ const cors = require('cors');
 const path = require('path');
 
 /* ===== Import Doc ===== */
-//const swaggerUi = require('swagger-ui-express');
-//const swaggerSpec = require('./config/swagger.config');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger.config');
 
 /* ===== Import Routes + Handler ===== */
 const errorHandler = require('./middlewares/error-handler.middleware');
@@ -20,7 +20,7 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
 /* ===== Swagger documentations ===== */
-//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 /* ===== Routes ===== */
 app.use('/api/auth', userRoutes);

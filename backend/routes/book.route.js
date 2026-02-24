@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
-// Import Midlleware
+
+// Middlewares
 const auth = require('../middlewares/auth.middleware');
 const multer = require('../middlewares/multer-config.middleware');
-// Import Controllers
-const bookCtrl = require('../controllers/book.controller');
-// Import Schema validation
 const validateRequest = require('../middlewares/validate-request.middleware');
+
+// Controllers
+const bookCtrl = require('../controllers/book.controller');
+
+// Zod schemas
 const {
   createBookSchema,
   updateBookSchema,
@@ -28,6 +31,12 @@ const {
  *     responses:
  *       200:
  *         description: Liste des livres
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Book'
  */
 router.get('/', bookCtrl.getAllBooks);
 
@@ -36,9 +45,7 @@ router.get('/', bookCtrl.getAllBooks);
  * /books/bestrating:
  *   get:
  *     summary: Récupérer les 3 livres les mieux notés
- *     description: Retourne un tableau contenant les trois livres ayant la meilleure note moyenne.
- *     tags:
- *       - Books
+ *     tags: [Books]
  *     responses:
  *       200:
  *         description: Liste des 3 livres les mieux notés
@@ -69,6 +76,10 @@ router.get('/bestrating', bookCtrl.getTopRatedBooks);
  *     responses:
  *       200:
  *         description: Livre trouvé
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
  *       404:
  *         description: Livre introuvable
  */
@@ -95,7 +106,7 @@ router.get('/:id', bookCtrl.getBookById);
  *               book:
  *                 type: string
  *                 description: JSON stringifié du livre
- *                 example: '{"title":"Mon livre","author":"Auteur","description":"..."}'
+ *                 example: '{"title":"Mon livre","author":"Auteur","genre":"Fantastique","year":2021}'
  *               image:
  *                 type: string
  *                 format: binary
