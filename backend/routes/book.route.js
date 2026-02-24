@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../Middleware/auth');
-const multer = require('../Middleware/multer-config');
-const bookCtrl = require('../Controllers/BooksControllers');
-
-router.post('/test-auth', auth, (req, res) => {
-  console.log('req.auth:', req.auth);
-  res.json({ ok: true, userId: req.auth.userId });
-});
+// Import Midlleware
+const auth = require('../middlewares/auth.middleware');
+const multer = require('../middlewares/multer-config.middleware');
+// Import Controllers
+const bookCtrl = require('../controllers/book.controller');
+// Import Schema validation
+const validateRequest = require('../middlewares/validate-request.middleware');
+const {
+  createBookSchema,
+  updateBookSchema,
+} = require('../schemas/book.schema');
 
 /**
  * @swagger
@@ -109,7 +112,13 @@ router.get('/:id', bookCtrl.getBookById);
  *       401:
  *         description: Non authentifié
  */
-router.post('/', auth, multer, bookCtrl.createBook);
+router.post(
+  '/',
+  auth,
+  multer,
+  validateRequest(createBookSchema),
+  bookCtrl.createBook
+);
 
 /**
  * @swagger
@@ -142,7 +151,13 @@ router.post('/', auth, multer, bookCtrl.createBook);
  *       403:
  *         description: Non autorisé
  */
-router.put('/:id', auth, multer, bookCtrl.updateBook);
+router.put(
+  '/:id',
+  auth,
+  multer,
+  validateRequest(updateBookSchema),
+  bookCtrl.updateBook
+);
 
 /**
  * @swagger

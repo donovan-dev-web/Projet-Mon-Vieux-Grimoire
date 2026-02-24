@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const usersController = require('../Controllers/UsersControllers');
+// Import controller
+const usersController = require('../controllers/user.controller');
+// Import schema validation
+const validateRequest = require('../middlewares/validate-request.middleware');
+const { signupSchema, loginSchema } = require('../schemas/user.schema');
 
 /**
  * @swagger
@@ -88,7 +92,7 @@ const usersController = require('../Controllers/UsersControllers');
  *                   type: string
  *                   example: Une erreur inattendue est survenue
  */
-router.post('/signup', usersController.signup);
+router.post('/signup', validateRequest(signupSchema), usersController.signup);
 
 /**
  * @swagger
@@ -160,6 +164,6 @@ router.post('/signup', usersController.signup);
  *                   type: string
  *                   example: Une erreur inattendue est survenue
  */
-router.post('/login', usersController.login);
+router.post('/login', validateRequest(loginSchema), usersController.login);
 
 module.exports = router;

@@ -1,7 +1,8 @@
 const swaggerJsdoc = require('swagger-jsdoc');
+const path = require('path');
 
 const options = {
-  definition: {
+  swaggerDefinition: {
     openapi: '3.0.0',
     info: {
       title: 'API Mon Vieux Grimoire',
@@ -108,7 +109,7 @@ const options = {
       },
     },
   },
-  apis: ['./Routes/*.js'],
+  apis: [path.join(__dirname, '../routes/*.js')],
 };
 
 const swaggerSpec = swaggerJsdoc(options);

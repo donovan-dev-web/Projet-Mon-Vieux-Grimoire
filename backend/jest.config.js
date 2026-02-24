@@ -1,6 +1,6 @@
 module.exports = {
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['<rootDir>/config/JestSetup.js'],
+  setupFilesAfterEnv: ['<rootDir>/config/jest.config.js'],
   collectCoverage: true,
   coverageDirectory: './test/coverage',
   coverageReporters: ['text', 'lcov'],
