@@ -38,7 +38,7 @@ async function createBook(userId, body, file) {
   const newBook = new Book({
     ...bookData,
     userId,
-    imageUrl: `${process.env.SERVER_URL || 'http://localhost:4000'}/images/${filename}`,
+    imageUrl: `${process.env.SERVER_URL}/images/${filename}`,
   });
 
   await newBook.save();
@@ -69,7 +69,7 @@ async function updateBook(bookId, userId, body, file) {
         : book.title.replace(/\s+/g, '_').toLowerCase()
     );
 
-    updateData.imageUrl = `${process.env.SERVER_URL || 'http://localhost:4000'}/images/${filename}`;
+    updateData.imageUrl = `${process.env.SERVER_URL}/images/${filename}`;
   }
 
   await Book.updateOne({ _id: bookId }, { ...updateData, _id: bookId });

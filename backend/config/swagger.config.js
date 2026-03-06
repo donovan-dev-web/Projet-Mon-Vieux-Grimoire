@@ -12,7 +12,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:4000/api',
+        url: `${process.env.SERVER_URL}/api`,
       },
     ],
     components: {
@@ -61,7 +61,7 @@ const options = {
             imageUrl: {
               type: 'string',
               description: "URL de l'image du livre",
-              example: 'http://localhost:4000/images/mon-livre.jpg',
+              example: `${process.env.SERVER_URL}/images/mon-livre.jpg`,
             },
             year: {
               type: 'integer',
