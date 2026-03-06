@@ -19,11 +19,14 @@ function validateRequest(schema) {
     const result = schema.safeParse(data);
 
     if (!result.success) {
+      const formattedErrors = result.error.format();
       const errors =
         result.error?.errors?.map((e) => e.message).join(', ') ||
         'Validation échouée';
-      console.log(result.error.format());
-      return next(new AppError(errors, 400, 'VALIDATION_ERROR'));
+      console.log(formattedErrors);
+      return next(
+        new AppError(errors, 400, 'VALIDATION_ERROR', formattedErrors)
+      );
     }
 
     req.body = result.data;

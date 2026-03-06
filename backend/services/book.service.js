@@ -22,7 +22,7 @@ async function createBook(userId, body, file) {
     throw new AppError('Image requise', 400, 'IMAGE_REQUIRED');
   }
 
-  // ⚠️ body est déjà validé par validateRequest
+  // body est déjà validé par validateRequest
   const bookData = { ...body };
 
   // Sécurité : empêcher injection d'ID

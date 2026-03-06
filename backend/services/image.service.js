@@ -19,7 +19,7 @@ const ensureImagesFolderExists = async () => {
 
 const saveImage = async (fileBuffer, filenameBase) => {
   await ensureImagesFolderExists();
-  const filename = `${filenameBase}_${Date.now()}.webp`;
+  const filename = `image_${Date.now()}.webp`;
   const outputPath = path.join(IMAGES_DIR, filename);
 
   try {

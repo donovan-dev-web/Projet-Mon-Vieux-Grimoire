@@ -14,5 +14,6 @@ module.exports = (err, req, res, _next) => {
     message: err.isOperational
       ? err.message
       : 'Une erreur inattendue est survenue',
+    details: err.details || null,
   });
 };
