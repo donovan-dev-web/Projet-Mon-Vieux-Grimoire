@@ -26,6 +26,11 @@ Ce repository contient l’architecture complète :
 * 🐳 Environnement Dockerisé
 
 ---
+**Deux branche disponible :**
+* Sans Docker (Branch Main) : https://github.com/donovan-dev-web/Projet-Mon-Vieux-Grimoire
+* Avec Docker : https://github.com/donovan-dev-web/Projet-Mon-Vieux-Grimoire/tree/Projet-Dockeriser
+
+---
 
 # 📑 Table des matières
 
