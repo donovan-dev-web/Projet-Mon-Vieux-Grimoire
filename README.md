@@ -26,6 +26,11 @@ Ce repository contient l’architecture complète :
 * 🐳 Environnement Dockerisé
 
 ---
+**Deux branche disponible :**
+* Sans Docker (Branch Main) : https://github.com/donovan-dev-web/Projet-Mon-Vieux-Grimoire
+* Avec Docker : https://github.com/donovan-dev-web/Projet-Mon-Vieux-Grimoire/tree/Projet-Dockeriser
+
+---
 
 # 📑 Table des matières
 
@@ -182,7 +187,17 @@ Disponible à : http://localhost:4000/api-docs/
 
 # 🚀 Installation
 
-## 🐳 Docker (Recommandé)
+## 💻 Local (Recommandé)
+
+```bash
+cp .env.exemple .env
+npm install
+npm run dev
+```
+
+---
+
+## 🐳 Docker
 
 ```bash
 docker-compose up --build
@@ -193,16 +208,12 @@ Frontend sur : http://localhost:3000
 
 Swagger documentation API sur http://localhost:4000/api-docs
 
----
 
-## 💻 Local
 
-```bash
-npm install
-npm run dev
-```
 
-MongoDB doit être lancé localement si Docker n’est pas utilisé.
+
+La version sans docker utilise mongoDB Atlas
+La version avec Docker utilise MongoDB en local.
 
 
 # 🔐 Sécurité
