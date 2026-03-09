@@ -190,7 +190,7 @@ Disponible à : http://localhost:4000/api-docs/
 ## 💻 Local (Recommandé)
 
 ```bash
-cp .env.exemple .env
+cp .env.example .env
 npm install
 npm run dev
 ```
