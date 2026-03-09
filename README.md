@@ -187,7 +187,17 @@ Disponible à : http://localhost:4000/api-docs/
 
 # 🚀 Installation
 
-## 🐳 Docker (Recommandé)
+## 💻 Local (Recommandé)
+
+```bash
+cp .env.exemple .env
+npm install
+npm run dev
+```
+
+---
+
+## 🐳 Docker
 
 ```bash
 docker-compose up --build
@@ -198,16 +208,12 @@ Frontend sur : http://localhost:3000
 
 Swagger documentation API sur http://localhost:4000/api-docs
 
----
 
-## 💻 Local
 
-```bash
-npm install
-npm run dev
-```
 
-MongoDB doit être lancé localement si Docker n’est pas utilisé.
+
+La version sans docker utilise mongoDB Atlas
+La version avec Docker utilise MongoDB en local.
 
 
 # 🔐 Sécurité
